@@ -335,6 +335,8 @@ section.sobre .flex img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    background-position: center center; /* Adicione esta linha */
+    background-size: cover; /* Adicione esta linha */
 }
 
 
@@ -532,6 +534,7 @@ footer .line-footer a:hover {
     text-decoration: underline;
 }
 
+
 /* Responsividade */
 @media (max-width: 768px) {
     footer .flex {
@@ -547,6 +550,49 @@ footer .line-footer a:hover {
         width: 40px;
         height: 40px;
         font-size: 18px;
+    }
+
+    footer .line-footer {
+        font-size: 1rem;
+        margin-top: 40px;
+        /* margin: 60px; */
+        text-align: center;
+        padding: 0 10px; /* Adiciona um pequeno padding nas laterais */
+        margin-left: 0; /* Remove a margem fixa para permitir centralização */
+   
+        
+    }
+}
+
+/* --- Telas Pequenas (max-width: 480px) --- */
+@media screen and (max-width: 480px) {
+    
+    /* O flex-direction: column já está definido em 768px e será herdado.
+       Ajustamos apenas os elementos internos. */
+
+    footer .logo-footer img {
+        /* Reduz um pouco mais o tamanho da logo */
+        width: 100px; 
+    }
+
+    footer .btn-social button {
+        /* Reduz levemente o tamanho dos botões sociais */
+        width: 35px; 
+        height: 35px;
+        font-size: 16px;
+    }
+
+    footer .line-footer {
+        /* Centraliza o texto e reduz o tamanho da fonte para caber na tela */
+        font-size: 0.9rem;
+        text-align: center;
+        margin: 30px auto 0 auto; /* Centraliza a margem e reduz o espaçamento superior */
+        padding: 0; /* Remove padding desnecessário */
+    }
+
+    footer .line-footer a {
+        /* Garante que o link de e-mail quebre a linha se for muito longo */
+        display: block; 
     }
 }
 
@@ -596,12 +642,20 @@ footer .line-footer a:hover {
     .topo-do-site .txt-topo-site,
     .topo-do-site .img-topo-site {
         text-align: center;
+        
+    }
+
+    .topo-do-site .img-topo-site{
+        margin-left: 30%;
+        margin-right: 60%;
     }
 
     .topo-do-site .img-topo-site img {
         width: 200px;
         height: 250px;
         box-shadow: 15px 10px 20px #000;
+        margin-left: 0%;
+        margin-right: 35%;
     }
     
     /* Especialidades */
@@ -661,12 +715,24 @@ footer .line-footer a:hover {
         width: 90%; /* Ocupa 90% da largura da tela */
         height: 450px; /* Reduz a altura */
         padding: 1rem;
-        margin-top: 20rem; /* Ajusta a margem superior */
+        margin: 50px auto 100px auto;
     }
 
     .container .slide .item {
         width: 150px;
         height: 250px;
+    }
+
+    .slide .item:nth-child(2) {
+        /* Garante que o item ativo ocupe 100% do espaço do container (seus 450px de altura) */
+        width: 100%; 
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+        /* Garante que a imagem de fundo preencha corretamente o item ativo */
+        background-position: center center;
+        background-size: cover;
     }
     
     .slide .item:nth-child(3) {
@@ -683,6 +749,18 @@ footer .line-footer a:hover {
     .item .content {
         left: 50px;
         width: 200px;
+        transform: translate(-50%, -50%); /* Centraliza */
+        width: 90%;
+        padding: 10px;
+        /* Adicione um fundo semitransparente para o texto ser legível sobre a imagem */
+        background: rgba(0, 0, 0, 0.4); 
+        border-radius: 5px;
+        color: #fff; /* Garante que o texto seja branco sobre a imagem escura */
+        text-align: center;
+    }
+
+    .slide .item:nth-child(2) .content{
+        display: block; /* Garante que o conteúdo seja visível no item ativo */
     }
 
     .content .name {
@@ -698,8 +776,17 @@ footer .line-footer a:hover {
     }
 
     .button button {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 35px;
+    }
+
+    .button{
+        /* Garante que o container dos botões esteja na parte inferior do slide container */
+        width: 100%;
+        text-align: center;
+        position: absolute; 
+        bottom: 20px; /* Garante que fique acima da borda inferior */
+        display: block; /* Garante que não foi ocultado por engano */
     }
 }
 
@@ -723,12 +810,14 @@ footer .line-footer a:hover {
     /* Galeria (Container) */
     .container {
         height: 350px;
-        margin-top: 15rem;
+        margin: 30px auto 80px auto; /* Alterado para ter uma margem superior mais controlada */
     }
-    
-    .container .slide .item {
-        width: 120px;
-        height: 200px;
+    .item .content {
+        left: 50%; /* Centraliza horizontalmente */
+        transform: translate(-50%, -50%); /* Ajusta para centralizar de fato */
+        width: 95%; 
+        color: #000; /* Garante a visibilidade */
+        text-align: center;
     }
 
     .slide .item:nth-child(3) {
@@ -744,7 +833,13 @@ footer .line-footer a:hover {
     }
 
     .content .name {
-        font-size: 24px;
+        font-size: 20px;
+    }
+    .content .des {
+        display: none; /* Oculta a descrição novamente se necessário para telas ultra-pequenas */
+    }
+    .content button {
+        display: none; /* Oculta o botão novamente se necessário */
     }
 }
 
