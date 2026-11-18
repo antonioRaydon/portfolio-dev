@@ -1,90 +1,106 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.cover-card');
-    const prevBtn = document.getElementById('cover-left');
-    const nextBtn = document.getElementById('cover-right');
+    const skillSwitch = document.getElementById('skill-switch');
+    const skillsPanel = document.getElementById('skill-panel-habilidades');
+    const technologiesPanel = document.getElementById('skill-panel-tecnologias');
 
-    if (!cards.length) return;
-
-    let currentIndex = 0;
-    const totalCards = cards.length;
-
-    function updateCarousel() {
-        cards.forEach((card, index) => {
-            // Calcula o offset relativo considerando a rotação infinita
-            let offset = index - currentIndex;
-
-            if (offset < -Math.floor(totalCards / 2)) {
-                offset += totalCards;
-            } else if (offset > Math.floor(totalCards / 2)) {
-                offset -= totalCards;
-            }
-
-            const absOffset = Math.abs(offset);
-
-            if (absOffset > 2) {
-                // Oculta cards fora da visão principal
-                card.style.opacity = '0';
-                card.style.visibility = 'hidden';
-                card.style.transform = 'translate(-50%, -50%) scale(0)';
-                card.style.zIndex = '0';
-            } else {
-                // Exibe e aplica os efeitos 3D baseados na posição
-                card.style.visibility = 'visible';
-                card.style.opacity = offset === 0 ? '1' : '0.6';
-
-                const translateX = offset * 240; // Distância horizontal
-                const scale = 1 - absOffset * 0.18; // Escala dos cards laterais
-                const rotateY = offset * -25; // Ângulo de rotação 3D
-                const zIndex = 10 - absOffset;
-
-                card.style.transform = `translate(calc(-50% + ${translateX}px), -50%) scale(${scale}) rotateY(${rotateY}deg)`;
-                card.style.zIndex = zIndex;
-                card.style.filter = offset === 0 ? 'none' : 'blur(2px) grayscale(40%)';
-            }
+    if (skillSwitch && skillsPanel && technologiesPanel) {
+        skillSwitch.addEventListener('click', () => {
+            const showTechnologies = skillSwitch.getAttribute('aria-checked') !== 'true';
+            skillSwitch.setAttribute('aria-checked', String(showTechnologies));
+            skillsPanel.classList.toggle('is-hidden', showTechnologies);
+            technologiesPanel.classList.toggle('is-hidden', !showTechnologies);
+            skillsPanel.setAttribute('aria-hidden', String(showTechnologies));
+            technologiesPanel.setAttribute('aria-hidden', String(!showTechnologies));
+            skillsPanel.inert = showTechnologies;
+            technologiesPanel.inert = !showTechnologies;
         });
     }
 
-    // Navegação para a esquerda (anterior)
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-        updateCarousel();
+    const moreProjectsButton = document.getElementById('load-more-projects');
+    const moreProjectCards = document.querySelectorAll('.project-card-more');
+    const categoryButtons = document.querySelectorAll('[data-category-filter]');
+    const projectCards = document.querySelectorAll('[data-project-category]');
+    let activeCategory = 'web';
+    let showMoreWebProjects = false;
+    let hasRenderedProjects = false;
+
+    const demoLoader = document.getElementById('demo-loader');
+    const demoSpinner = document.getElementById('demo-loader-spinner');
+    let demoIsLoading = false;
+
+    // Navegadores podem restaurar a página pelo back-forward cache com o loader aberto.
+    window.addEventListener('pageshow', () => {
+        if (!demoLoader) return;
+        demoLoader.hidden = true;
+        demoIsLoading = false;
     });
 
-    // Navegação para a direita (próximo)
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalCards;
-        updateCarousel();
-    });
-
-    // Suporte a gestos/swipe para dispositivos móveis
-    let startX = 0;
-    let endX = 0;
-    const carouselContainer = document.querySelector('.cover-carousel');
-
-    if (carouselContainer) {
-        carouselContainer.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        }, { passive: true });
-
-        carouselContainer.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-            handleSwipe();
-        }, { passive: true });
-    }
-
-    function handleSwipe() {
-        const threshold = 50; // Distância mínima do deslize
-        if (startX - endX > threshold) {
-            // Deslizou para a esquerda -> próximo
-            currentIndex = (currentIndex + 1) % totalCards;
-            updateCarousel();
-        } else if (endX - startX > threshold) {
-            // Deslizou para a direita -> anterior
-            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-            updateCarousel();
+    if (demoSpinner) {
+        for (let index = 0; index < 12; index += 1) {
+            const bar = document.createElement('span');
+            const pulse = document.createElement('i');
+            bar.className = 'demo-loader-bar';
+            bar.style.setProperty('--bar-index', index);
+            bar.appendChild(pulse);
+            demoSpinner.appendChild(bar);
         }
     }
 
-    // Inicializa a galeria
-    updateCarousel();
+    document.querySelectorAll('.demo-link').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            if (!demoLoader || demoIsLoading || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            demoIsLoading = true;
+            demoLoader.hidden = false;
+            window.setTimeout(() => {
+                window.location.assign(link.href);
+            }, 3000);
+        });
+    });
+
+    function renderProjects() {
+        projectCards.forEach((card) => {
+            const isCurrentCategory = card.dataset.projectCategory === activeCategory;
+            const isCollapsedWebProject = card.classList.contains('project-card-more') && !showMoreWebProjects;
+            const shouldShow = isCurrentCategory && !isCollapsedWebProject;
+            const shouldAnimate = shouldShow && (card.hidden || !hasRenderedProjects);
+            card.hidden = !shouldShow;
+
+            if (shouldAnimate) {
+                card.classList.remove('project-card-enter');
+                void card.offsetWidth;
+                card.classList.add('project-card-enter');
+            }
+        });
+        hasRenderedProjects = true;
+
+        if (moreProjectsButton) {
+            const hasMoreInCategory = activeCategory === 'web' && moreProjectCards.length > 0;
+            moreProjectsButton.hidden = !hasMoreInCategory;
+            moreProjectsButton.setAttribute('aria-expanded', String(showMoreWebProjects));
+            moreProjectsButton.textContent = showMoreWebProjects ? 'Mostrar menos' : 'Ver mais projetos';
+        }
+    }
+
+    categoryButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            activeCategory = button.dataset.categoryFilter;
+            showMoreWebProjects = false;
+            categoryButtons.forEach((categoryButton) => {
+                const isActive = categoryButton === button;
+                categoryButton.classList.toggle('is-active', isActive);
+                categoryButton.setAttribute('aria-pressed', String(isActive));
+            });
+            renderProjects();
+        });
+    });
+
+    if (moreProjectsButton && moreProjectCards.length) {
+        moreProjectsButton.addEventListener('click', () => {
+            showMoreWebProjects = !showMoreWebProjects;
+            renderProjects();
+        });
+    }
+
+    renderProjects();
 });

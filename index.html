@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- bootstrap-icons fim -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title>
+    <meta name="description" content="Portfólio de Antonio Raydon: projetos, habilidades e contato profissional.">
+    <title>Antonio Raydon | Portfólio</title>
 
 </head>
 <body>
@@ -24,30 +25,26 @@
             </a> <!-- logo -->
             <nav class="menu-desktop">
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#skill">Skill</a></li>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#skill">Habilidades</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
 
-<section class="topo-do-site" id="inicio">
             <div class="btn-contato">
-                <a href="arquivos/meus-arquivos/Antonio_Raydon_curriculo0.pdf" download>
-                    <button>Baixar Curriculo</button>
-                </a>
+                <a href="arquivos/meus-arquivos/Antonio_Raydon_curriculo-att.pdf" download aria-label="Baixar currículo de Antonio Raydon">Baixar currículo</a>
             </div>
         </div> <!-- interface -->
     </header>
     <main>
-        <section class="topo-do-site">
+        <section class="topo-do-site" id="inicio">
             <div class="interface">
                 <div class="flex">
                     <div class="txt-topo-site"><!--topo do site--> 
-                        <h1>"Cada linha de código é uma oportunidade de inovar e criar o futuro"<span>.</span></h1>
-                        <p>Sou um profissional apaixonado por criar soluções digitais que unem design,
-                        tecnologia e experiência do usuário. Com habilidades em design gráfico, desenvolvimento
-                        web, figma e ibispaint busco transformar ideias em interfaces funcionais e envolventes.</p>
+                        <h1>Olá, sou Antonio Raydon<span>.</span></h1>
+                        <p>Desenvolvedor front-end com foco em interfaces web. Crio páginas com HTML, CSS e JavaScript e estou ampliando meus conhecimentos em React e Node.js. Busco uma oportunidade para contribuir com uma equipe e continuar evoluindo na área.</p>
                         <div class="btn-contato">
                             <!-- <a href="#">
                                 <button>Baixar</button>
@@ -61,9 +58,16 @@
             </div><!--interface-->
         </section> <!--topo-do-site-->
         <section class="especialidade" id="skill">
-        <section class="especialidade">
             <div class="interface">
-                <h2 class="titulo">MINHAS <SPan>ESPECIALIDADES</SPan></h2>
+                <h2 class="titulo">HABILIDADES <span>E FERRAMENTAS</span></h2>
+                <p class="skill-intro">Conheça minhas áreas de interesse e as tecnologias que uso nos meus projetos.</p>
+                <div class="skill-switch-wrap">
+                    <span class="skill-switch-label" id="skill-label-habilidades">Habilidades</span>
+                    <button class="skill-switch" id="skill-switch" type="button" role="switch" aria-checked="false" aria-label="Alternar entre habilidades e tecnologias"><span></span></button>
+                    <span class="skill-switch-label" id="skill-label-tecnologias">Tecnologias</span>
+                </div>
+                <div class="skill-panels">
+                <div class="skill-panel skill-panel-habilidades" id="skill-panel-habilidades" aria-hidden="false">
                 <div class="flex">
                     <div class="especialidade-box">
                         <i class="bi bi-file-earmark-code-fill"></i>
@@ -78,21 +82,18 @@
                         impactante. Combinando criatividade e estratégia, crio identidades visuais,
                         materiais promocionais e interfaces digitais que fortalecem a presença da marca e conectam-se ao público.</p>
                     </div> <!--especialidade-box-->
-                    <div class="especialidade-box">
-                        <i class="bi bi-file-earmark-code-fill"></i>
-                        <h3>Skill</h3>
-                        <p>Front-End Base.</p>
-                        <p>Desenvolvimento React.</p>
-                        <p>Node.js.</p>
-                        <p>java script.</p>
-                        <p>html e css.</p>
-                        <p>Inovação em IA.</p>
-                    </div> <!--especialidade-box-->
                 </div><!--flex-->
+                </div>
+                <div class="skill-panel skill-panel-tecnologias is-hidden" id="skill-panel-tecnologias" aria-hidden="true" inert>
+                    <div class="flex">
+                        <div class="especialidade-box"><i class="bi bi-code-slash"></i><h3>Desenvolvimento</h3><ul class="technology-list"><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>React (em aprendizado)</li><li>Node.js (em aprendizado)</li></ul></div>
+                        <div class="especialidade-box"><i class="bi bi-brush"></i><h3>Design e criação</h3><ul class="technology-list"><li>Figma</li><li>IbisPaint</li><li>Design de interfaces</li></ul></div>
+                        <div class="especialidade-box"><i class="bi bi-git"></i><h3>Ferramentas e IA</h3><ul class="technology-list"><li>Git</li><li>GitHub</li><li>Visual Studio Code</li><li>Claude (chat)</li><li>Claude Code</li></ul></div>
+                    </div>
+                </div>
             </div><!--interface-->
         </section>
         <section class="sobre" id="sobre">
-        <section class="sobre">
             <div class="interface">
                 <div class="flex">
                     <div class="img-sobre">
@@ -100,98 +101,68 @@
                     </div><!--img-sobre-->
                     <div class="txt-sobre">
                         <h2>BEM VINDO, <span>SOU ANTONIO RAYDON</span></h2>
-                        <p>Sou um programador apaixonado por tecnologia e desenvolvimento de software.
-                            Gosto de transformar ideias em soluções funcionais e estou sempre buscando
-                            aprender novas linguagens e ferramentas. Tenho experiência com [HTML, CSS e JS]
-                            e foco em escrever códigos limpos e eficientes. Estou sempre aberto a novos
-                            desafios e colaborações!</p>
-                            <p>Sou um programador apaixonado por tecnologia e desenvolvimento de software.
-                            Gosto de transformar ideias em soluções funcionais e estou sempre buscando
-                            aprender novas linguagens e ferramentas. Tenho experiência com [HTML, CSS e JS]
-                            e foco em escrever códigos limpos e eficientes. Estou sempre aberto a novos
-                            desafios e colaborações!</p>
+                        <p>Sou um desenvolvedor interessado em criar soluções digitais funcionais e aprender construindo. Meus projetos pessoais me ajudam a praticar desenvolvimento web, explorar ideias visuais e desenvolver meu processo.</p>
+                        <p>Estou em busca de uma oportunidade profissional para colaborar com uma equipe, contribuir com dedicação e crescer na área de tecnologia.</p>
                     </div><!--txt-sobre-->
                 </div><!--flex-->
             </div><!--interface-->
         </section><!--sobre-->
 
-        <!-- GALERIA DE PROJETOS (6 ITENS) -->
         <section id="projetos" class="gameplay-container">
             <h2 class="titulo">MEUS <span>PROJETOS</span></h2>
-
-            <div class="cover-gallery">
-                <button class="cover-nav" id="cover-left">❮</button>
-
-                <div class="cover-carousel">
-                    <!-- PROJETO 1 -->
-                    <div class="cover-card">
-                        <img src="img/projeto1.png" alt="Propaganda de Tênis">
-                        <div class="cover-info">
-                            <h3>PROPAGANDA DE TÊNIS</h3>
-                            <p>Um site de exposição de tênis de uma marca fictícia!</p>
-                            <button class="card-btn" onclick="window.location.href='tenis.html'">ver projeto</button>
-                        </div>
-                    </div>
-
-                    <!-- PROJETO 2 -->
-                    <div class="cover-card">
-                        <img src="img/doação.png" alt="Doação de Eletrônicos">
-                        <div class="cover-info">
-                            <h3>DOAÇÃO DE ELETRÔNICOS</h3>
-                            <p>Conectando quem doa a quem precisa, promovendo inclusão digital.</p>
-                            <button class="card-btn" onclick="window.location.href='https://github.com/antonioRaydon/Lord.git'">ver projeto</button>
-                        </div>
-                    </div>
-
-                    <!-- PROJETO 3 -->
-                    <div class="cover-card">
-                        <img src="img/firely.png" alt="Extinção dos Vagalumes">
-                        <div class="cover-info">
-                            <h3>EXTINÇÃO DOS VAGALUMES</h3>
-                            <p>Os vaga-lumes estão ameaçados de extinção devido à perda de habitat.</p>
-                            <button class="card-btn" onclick="window.location.href='https://github.com/antonioRaydon/Firefly.git'">ver projeto</button>
-                        </div>
-                    </div>
-
-                    <!-- PROJETO 4 (NOVO) -->
-                    <div class="cover-card">
-                        <img src="img/projeto4.png" alt="luna arcana gamer">
-                        <div class="cover-info">
-                            <h3>LUNA ARCANA GAMER</h3>
-                            <p>gamer em desenvolvimente na godot por mim.</p>
-                            <button class="card-btn" onclick="window.location.href='https://antonioraydon.github.io/Luna-Arcana-game-site/'">ver projeto</button>
-                        </div>
-                    </div>
-
-                    <!-- PROJETO 5 (NOVO) -->
-                    <div class="cover-card">
-                        <img src="img/projeto5.png" alt="Nome do Projeto 5">
-                        <div class="cover-info">
-                            <h3>CIEL IA</h3>
-                            <p>Uma ia feita por mim para testes de IA,</p>
-                            <button class="card-btn" onclick="window.location.href='#'">ver projeto</button>
-                        </div>
-                    </div>
-
-                    <!-- PROJETO 6 (NOVO) -->
-                    <div class="cover-card">
-                        <img src="img/projeto6.png" alt="Nome do Projeto 6">
-                        <div class="cover-info">
-                            <h3>Sistema de Chamados de TI</h3>
-                            <p>Aplicação web desenvolvida para gestão e controle de chamados de suporte técnicos</p>
-                            <button class="card-btn" onclick="window.location.href='https://antonioraydon.github.io/suporte-ti-escolar/'">ver projeto</button>
-                        </div>
-                    </div>
-
-                </div>
-
-                <button class="cover-nav" id="cover-right">❯</button>
+            <p class="projects-intro">Confira o objetivo de cada projeto e acesse a demonstração ou o código disponível.</p>
+            <div class="project-category-tabs" role="group" aria-label="Filtrar projetos por categoria">
+                <button class="project-category-button is-active" type="button" data-category-filter="web" aria-pressed="true">Desenvolvimento Web</button>
+                <button class="project-category-button" type="button" data-category-filter="games" aria-pressed="false">Jogos</button>
+                <button class="project-category-button" type="button" data-category-filter="ai" aria-pressed="false">Inteligência Artificial</button>
             </div>
+            <div class="projects-grid">
+                <article class="cover-card project-card" data-project-category="web">
+                    <img src="img/projeto1.png" alt="Página de apresentação de uma coleção de tênis" loading="lazy">
+                    <div class="cover-info"><h3>Vitrine de tênis</h3><p><strong>Objetivo:</strong> apresentar produtos de uma marca fictícia em uma página promocional.</p><p><strong>O que pratiquei:</strong> estrutura de página, estilos e interações front-end.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><div class="project-links"><a class="card-btn demo-link" href="tenis.html">Ver demonstração</a><a class="card-btn project-code" href="https://github.com/antonioRaydon/portfolio-dev" target="_blank" rel="noopener">Ver repositório</a></div></div>
+                </article>
+                <article class="cover-card project-card" data-project-category="web">
+                    <img src="img/doação.png" alt="Projeto de conexão entre doadores e pessoas que precisam de eletrônicos" loading="lazy">
+                    <div class="cover-info"><h3>Doação de eletrônicos</h3><p><strong>Objetivo:</strong> aproximar quem pode doar equipamentos de quem precisa, promovendo inclusão digital.</p><p><strong>O que pratiquei:</strong> apresentação de uma ideia de impacto social em um projeto web.</p><div class="project-tags"><span>Projeto web</span><span>Inclusão digital</span></div><div class="project-links"><a class="card-btn" href="https://github.com/antonioRaydon/Lord" target="_blank" rel="noopener">Ver repositório</a></div></div>
+                </article>
+                <article class="cover-card project-card" data-project-category="web">
+                    <img src="img/projeto-vagalumes-capa.png" alt="Capa do projeto EcoNatureza sobre o desaparecimento dos vaga-lumes" loading="lazy">
+                    <div class="cover-info"><h3>Preservação dos vaga-lumes</h3><p><strong>Objetivo:</strong> informar sobre ameaças aos vaga-lumes e a importância de preservar seus habitats.</p><p><strong>O que pratiquei:</strong> organização de conteúdo e comunicação visual em uma página web.</p><div class="project-tags"><span>Projeto web</span><span>Conscientização</span></div><div class="project-links"><a class="card-btn" href="https://github.com/antonioRaydon/Firefly" target="_blank" rel="noopener">Ver repositório</a></div></div>
+                </article>
+                <article class="cover-card project-card project-card-more" data-project-category="web" hidden>
+                    <img src="img/projeto6.png" alt="Interface do sistema de chamados de suporte de TI" loading="lazy">
+                    <div class="cover-info"><h3>Sistema de chamados de TI</h3><p><strong>Objetivo:</strong> organizar o registro e acompanhamento de solicitações de suporte técnico escolar.</p><p><strong>O que pratiquei:</strong> desenvolvimento de uma aplicação web orientada a um fluxo de atendimento.</p><div class="project-tags"><span>Aplicação web</span><span>Suporte técnico</span></div><div class="project-links"><a class="card-btn demo-link" href="https://antonioraydon.github.io/suporte-ti-escolar/" target="_blank" rel="noopener">Ver demonstração</a><a class="card-btn project-code" href="https://github.com/antonioRaydon/suporte-ti-escolar" target="_blank" rel="noopener">Ver repositório</a></div></div>
+                </article>
+                <article class="cover-card project-card project-card-more" data-project-category="web" hidden>
+                    <img src="img/projeto-barbearia-exclusiva.png" alt="Página inicial do site de agendamento da Barbearia Exclusiva" loading="lazy">
+                    <div class="cover-info"><h3>Barbearia Exclusiva</h3><p><strong>Objetivo:</strong> facilitar o agendamento de serviços em uma barbearia por meio de um site.</p><p><strong>Área:</strong> aplicação web para serviços e agendamentos.</p><div class="project-tags"><span>Aplicação web</span><span>Agendamento</span><span>Barbearia</span></div><div class="project-links"><a class="card-btn" href="https://github.com/antonioRaydon/Barbearia-Exclusiva" target="_blank" rel="noopener">Ver repositório</a></div></div>
+                </article>
+                <article class="cover-card project-card project-card-more" data-project-category="web" hidden>
+                    <img src="img/projeto-cardapio-raydon.png" alt="Página inicial do cardápio digital da Pizzaria Raydon" loading="lazy">
+                    <div class="cover-info"><h3>Cardápio Raydon</h3><p><strong>Objetivo:</strong> apresentar o cardápio de uma pizzaria artesanal e organizar as opções por categoria.</p><p><strong>O que pratiquei:</strong> apresentação visual de produtos e navegação por seções do menu.</p><div class="project-tags"><span>Cardápio digital</span><span>Gastronomia</span><span>Projeto web</span></div><p class="project-link-pending">Demonstração e repositório em breve</p></div>
+                </article>
+                <article class="cover-card project-card" data-project-category="games" hidden>
+                    <img src="img/projeto4.png" alt="Página do jogo Luna Arcana" loading="lazy">
+                    <div class="cover-info"><h3>Luna Arcana</h3><p><strong>Objetivo:</strong> apresentar um jogo em desenvolvimento com a engine Godot.</p><p><strong>O que pratiquei:</strong> criação de uma página de apresentação para um projeto de game.</p><div class="project-tags"><span>Godot</span><span>Game dev</span><span>Site do projeto</span></div><div class="project-links"><a class="card-btn demo-link" href="https://antonioraydon.github.io/Luna-Arcana-game-site/" target="_blank" rel="noopener">Ver demonstração</a><a class="card-btn project-code" href="https://github.com/antonioRaydon/Luna-Arcana-game-site" target="_blank" rel="noopener">Ver repositório</a></div></div>
+                </article>
+                <article class="cover-card project-card" data-project-category="ai" hidden>
+                    <img src="img/projeto5.png" alt="Projeto experimental Ciel IA" loading="lazy">
+                    <div class="cover-info"><h3>Ciel IA</h3><p><strong>Objetivo:</strong> projeto pessoal de experimentação com inteligência artificial.</p><div class="project-tags"><span>Estudo</span><span>Inteligência artificial</span></div><div class="project-links"><a class="card-btn" href="https://github.com/antonioRaydon/Ciel-" target="_blank" rel="noopener">Ver repositório</a></div></div>
+                </article>
+            </div>
+            <button class="load-more-projects" id="load-more-projects" type="button" aria-expanded="false">Ver mais projetos</button>
         </section>
 
     </main>
+    <div class="demo-loader-overlay" id="demo-loader" role="status" aria-live="polite" aria-label="Carregando demonstração" hidden>
+        <div class="demo-loader-card">
+            <div class="demo-loader-spinner" id="demo-loader-spinner" aria-hidden="true"></div>
+            <h2>Preparando a demonstração</h2>
+            <p>Seu projeto abrirá em instantes...</p>
+        </div>
+    </div>
     <script src="posti.js"></script>
-    <footer>
+    <footer id="contato">
             <div class="interface">
                 <div class="liner-footer">
                     <div class="flex">
